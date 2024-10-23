@@ -3,17 +3,23 @@ import turtle as trtl
 import random as rand
 
 #-----game configuration----
-spot_color = "pink"
-spot_size = 2
-spot_shape = "circle"
+
+# initial game settings before the first spot is clicked
+spot_color = "pink" 
+spot_size = 2 
+spot_shape = "circle" 
 score = 0
-font_setup = ("Arial", 20, "normal")
+font_setup = ("Times New Roman", 20, "normal") 
+
+# sets the timer to a certain time and interval while not letting it start until the spot is clicked
 timer = 30
-counter_interval = 1000
+counter_interval = 1000 
 timer_up = False
-colors = ["red", "blue", "green", "yellow", "orange", "black", "cyan"]
-sizes = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5]
-shapes = ["arrow", "classic", "turtle", "square", "triangle"]
+
+# randomized features
+colors = ["red", "blue", "green", "yellow", "orange", "black", "cyan"] 
+sizes = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5] 
+shapes = ["arrow", "classic", "turtle", "square", "triangle"] 
 
 #-----initialize turtle-----
 trtl.bgcolor("lightgreen")
@@ -44,28 +50,28 @@ counter.hideturtle()
 
 #-----game functions--------
 def add_color():
-    random_color = rand.choice(colors)
-    p.fillcolor(random_color)
+    random_color = rand.choice(colors) # a random color is chosen from the "colors" variable when the spot is clicked
+    p.fillcolor(random_color) # the turtle then fills with stop with this chosen color
     p.stamp()
     p.fillcolor(spot_color)
 
 def change_size():
-    random_size = rand.choice(sizes)
-    p.shapesize(random_size)
+    random_size = rand.choice(sizes) # a random size is chosen from the "sizes variable"
+    p.shapesize(random_size) # p then uses this random size to change the shape size
 
 def change_shape():
-    random_shape = rand.choice(shapes)
-    p.shape(random_shape)
+    random_shape = rand.choice(shapes) # a random shape is chosen from the "shapes" variable
+    p.shape(random_shape) # p then uses this random shape to change the shape
 
 def spot_clicked(x, y):
     global timer_up
-    if timer_up == False:
+    if timer_up == False: # before the timer has started or been displayed, all the functions are called
        update_score()
        add_color()
        change_size()
        change_shape()
        change_position()
-       if timer == 30:
+       if timer == 30: # once the timer starts, it starts incrementing by -1
            countdown()
     else:
        counter.hideturtle()
