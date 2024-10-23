@@ -1,4 +1,3 @@
-# a121_catch_a_turtle.py
 #-----import statements-----
 import turtle as trtl
 import random as rand
@@ -12,8 +11,9 @@ font_setup = ("Arial", 20, "normal")
 timer = 30
 counter_interval = 1000
 timer_up = False
-colors = ["red", "blue", "green", "yellow", "orange", "lightgreen", "cyan"]
-sizes = [0.5, 1, 1.5, 2, 2.5, 3]
+colors = ["red", "blue", "green", "yellow", "orange", "black", "cyan"]
+sizes = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5]
+shapes = ["arrow", "classic", "turtle", "square", "triangle"]
 
 #-----initialize turtle-----
 trtl.bgcolor("lightgreen")
@@ -53,13 +53,20 @@ def change_size():
     random_size = rand.choice(sizes)
     p.shapesize(random_size)
 
+def change_shape():
+    random_shape = rand.choice(shapes)
+    p.shape(random_shape)
+
 def spot_clicked(x, y):
     global timer_up
-    if not timer_up:
+    if timer_up == False:
        update_score()
        add_color()
        change_size()
+       change_shape()
        change_position()
+       if timer == 30:
+           countdown()
     else:
        counter.hideturtle()
        p.hideturtle()
@@ -80,7 +87,6 @@ def update_score():
 def countdown():
     global timer, timer_up
     counter.clear()
-    counter.hideturtle()
     if timer <= 0:
        counter.write("Time's Up", font=font_setup)
        timer_up = True
@@ -89,16 +95,10 @@ def countdown():
        timer -= 1
        counter.getscreen().ontimer(countdown, counter_interval)
 
-def change_size():
-    random_size = rand.choice(sizes)
-    p.shapesize(random_size)
-
 def start_game():
-    wn.ontimer(countdown, counter_interval)
     p.onclick(spot_clicked)
 
 #-----events----------------
 start_game()
 p.onclick(spot_clicked)
-wn.ontimer(countdown, counter_interval) 
 wn.mainloop()
