@@ -18,7 +18,7 @@ timer_up = False
 
 # randomized features
 colors = ["red", "blue", "green", "yellow", "orange", "black", "cyan"] 
-sizes = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5] 
+sizes = [1, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5] 
 shapes = ["arrow", "classic", "turtle", "square", "triangle"] 
 
 #-----initialize turtle-----
@@ -94,7 +94,7 @@ def countdown():
     global timer, timer_up
     counter.clear()
     if timer <= 0:
-       counter.write("Time's Up", font=font_setup)
+       counter.write("Time's Up!", font=font_setup)
        timer_up = True
     else:
        counter.write(f"Timer: {timer}", font = font_setup)
@@ -106,5 +106,4 @@ def start_game():
 
 #-----events----------------
 start_game()
-p.onclick(spot_clicked)
 wn.mainloop()
