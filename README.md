@@ -10,7 +10,11 @@
 
 4. Choose two snapshots of code that demonstrate the algorithm(s) used to implement the additional features. Explain the code in the screenshots.
 
-## Video (With the previous turtles shown) - 
+## Video:
+
+
+## Screenshot of the final code:
+![image](https://github.com/user-attachments/assets/5c6f83da-2d30-4753-b597-69ddbe425fe1)
 
 
 ## Code Snapshots:
